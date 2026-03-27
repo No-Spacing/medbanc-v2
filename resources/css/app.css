@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fi-timeline-section {
+    @apply bg-transparent !important;
+}
+
+[x-cloak] { display: none !important; }
