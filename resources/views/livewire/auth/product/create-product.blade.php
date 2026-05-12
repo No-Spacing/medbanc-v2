@@ -43,8 +43,13 @@
                                 <td class="px-4 py-3 max-w-sm overflow-hidden text-ellipsis whitespace-nowrap">
                                     {{ $product->description }}
                                 <td class="px-4 py-3">
-                                    <img src="{{ asset($product->product_image->image) }}" alt="Category Image"
-                                        class="w-32 h-auto">
+                                    @if($product->product_images->isNotEmpty())
+                                        <img 
+                                            src="{{ asset($product->product_images->first()->image) }}" 
+                                            class="w-32 h-auto"
+                                            alt="Product Image"
+                                        >
+                                    @endif
                                 </td>
                                 <td class="px-4 py-3">{{ $product->created_at }}</td>
                                 <td class="px-4 py-3">

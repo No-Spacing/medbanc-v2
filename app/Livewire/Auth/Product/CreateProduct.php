@@ -5,13 +5,8 @@ namespace App\Livewire\Auth\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
-
 use Livewire\Attributes\Url;
-
-use Illuminate\Http\Request;
-
 use App\Models\Product;
-
 use App\Models\ProductImage;
 
 class CreateProduct extends Component
@@ -34,38 +29,31 @@ class CreateProduct extends Component
     }
 
     public function update()
-    { 
+    {
         foreach ($this->updatePhotos as $photo) {
             $photo->storeAs('images/products/medical-equipment', $photo->getClientOriginalName(), 'public_uploads');
-            ProductImage::create(['image' => 'images/products/medical-equipment/'.$photo->getClientOriginalName(),
+            ProductImage::create([
+                'image' => 'images/products/medical-equipment/' . $photo->getClientOriginalName(),
                 'product_id' => $this->product_id
             ]);
-        }  
+        }
 
         $this->reset('updatePhotos');
-    }
-
-    public function save()
-    {
-        // Product::create([
-        //     'name' => $this->name,
-        //     'category_id' => $this->category_id,
-        //     'description' => $this->description,
-            
-        // ]);
     }
 
     public function render()
     {
         return view('livewire.auth.product.create-product')
-        ->layout('components.layouts.auth.user')
-        ->with([
-            'products' => Product::with('product_image')
-            ->with('category')
-            ->where('name', 'like', '%' . $this->search . '%')
-            ->where('description', 'like', '%' . $this->search . '%')
-            ->paginate(5)
-            ->withQueryString()
-        ]);
+            ->layout('components.layouts.auth.user')
+            ->with([
+                'products' => Product::with('product_images')
+                    ->with('category')
+                    ->where(function ($query) {
+                        $query->where('name', 'like', '%' . $this->search . '%')
+                            ->orWhere('description', 'like', '%' . $this->search . '%');
+                    })
+                    ->paginate(5)
+                    ->withQueryString()
+            ]);
     }
 }
