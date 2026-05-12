@@ -20,8 +20,15 @@ class ShowProduct extends Component
     {
         $this->prodId = $product_id;
         $this->catslug = $category_slug;
-        $this->firstImage = ProductImage::where('product_id', $this->prodId)->skip(1)->first();
-        $this->currentImage = $this->firstImage->image;
+
+        $this->firstImage = ProductImage::where('product_id', $this->prodId)
+            ->first(); // get FIRST image, not skip(1)
+
+        if ($this->firstImage) {
+            $this->currentImage = $this->firstImage->image;
+        } else {
+            $this->currentImage = null;
+        }
     }
 
     public function selectImage($image)
