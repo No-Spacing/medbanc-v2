@@ -27,7 +27,7 @@
                 <!-- First Name -->
             <div class="space-y-2">
                 <label>First Name *</label>
-                <input type="text" placeholder="Your Name"
+                <input type="text"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
             </div>
@@ -35,7 +35,7 @@
             <!-- Last Name -->
             <div class="space-y-2">
                 <label>Last Name *</label>
-                <input type="text" placeholder="Your Name"
+                <input type="text"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
             </div>
@@ -48,20 +48,12 @@
                 required>
             </div>
 
-            <!-- Confirm Email -->
-            <div class="space-y-2">
-                <label>Confirm Email *</label>
-                <input type="text" placeholder="Confirm Email"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
-            </div>
-
             <!-- Complete Address -->
             <div class="space-y-2 col-span-1 md:col-span-2">
                 <label>Complete Address *</label>
-                <textarea rows="5" placeholder="Your Address"
+                <input type=text rows="5" placeholder="Your Address"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required></textarea>
+                required />
             </div>
 
             {{-- Country --}}
@@ -105,31 +97,33 @@
                 </span>
             </div>
 
-                <!-- First Name -->
             <div class="space-y-2">
                 <label>Product/Item *</label>
-                <input type="text" placeholder="Your Name"
-                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required>
+                <select
+                    class="w-full  p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                    required
+                >
+                    <option value="" class="">Select item</option>
+                    @foreach ($products as $product)
+                        <option value="{{ $product->name }}">{{ $product->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
-            <!-- Last Name -->
             <div class="space-y-2">
                 <label>Purchased From *</label>
-                <input type="text" placeholder="Your Name"
+                <input type="text"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
             </div>
 
-            <!-- Email -->
             <div class="space-y-2">
                 <label>Purchased Price*</label>
-                <input type="text" placeholder="Your Email"
+                <input type="text"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required>
             </div>
 
-            <!-- Confirm Email -->
             <div class="space-y-2">
                 <label>Date Purchased *</label>
                 <input type="date" 
@@ -137,7 +131,6 @@
                 required>
             </div>
 
-            {{-- Serial Number --}}
             <div class="space-y-2">
                 <label>Serial Number *</label>
                 <input type="text" placeholder="Serial Number"
@@ -145,7 +138,6 @@
                 required>
             </div>
 
-            {{-- Age Bracket --}}
             <div class="space-y-2">
                 <label class="">Customer's age bracket *</label>
                 <select

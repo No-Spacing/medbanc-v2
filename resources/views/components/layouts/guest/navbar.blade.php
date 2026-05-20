@@ -34,7 +34,7 @@
     $newsEventsLinkClass = Request::is('news-events') ? $underlineClass : '';
     $aboutLinkClass = Request::is('about') ? $underlineClass : '';
     $contactLinkClass = Request::is('contact') ? $underlineClass : '';
-
+    $warrantLinkClass = Request::is('warranty') ? $underlineClass : '';
     // Set navbar margin bottom based on the page
     $navbarMarginBottom = Request::is('/') ? '' : 'static'; // No extra margin for home page, static for others
 
@@ -128,6 +128,7 @@
                 <a href="{{ route('product') }}" class="text-sm font-semibold leading-6 text-black {{ $productLinkClass }} hover:underline hover:decoration-AColor-Logo-Green hover:decoration-from-font hover:underline-offset-8 transition-all duration-300 ease-in-out hover:text-AColor-Logo-Green">PRODUCTS</a>
                 <a href="{{ route('news-events') }}" class="text-sm font-semibold leading-6 text-black {{ $newsEventsLinkClass }} hover:underline hover:decoration-AColor-Logo-Green hover:decoration-from-font hover:underline-offset-8 transition-all duration-300 ease-in-out hover:text-AColor-Logo-Green">NEWS AND EVENTS</a>
                 <a href="{{ route('contact') }}" class="text-sm font-semibold leading-6 text-black {{ $contactLinkClass }} hover:underline hover:decoration-AColor-Logo-Green hover:decoration-from-font hover:underline-offset-8 transition-all duration-300 ease-in-out hover:text-AColor-Logo-Green">CONTACT</a>
+                <a href="{{ route('warranty') }}" class="text-sm font-semibold leading-6 text-black {{ $warrantLinkClass }} hover:underline hover:decoration-AColor-Logo-Green hover:decoration-from-font hover:underline-offset-8 transition-all duration-300 ease-in-out hover:text-AColor-Logo-Green">WARRANTY</a>
             </div>
 
             <!-- Explore Careers Link (Right Side) -->
@@ -154,6 +155,7 @@
         <a href="/career" class="block py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 nav-link">Explore Careers</a>
         <a href="/news&events" class="block py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 nav-link">News and Events</a>
         <a href="/contact" class="block py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 nav-link">Contact</a>
+        <a href="/warranty" class="block py-2 px-4 text-sm text-gray-800 hover:bg-gray-100 nav-link">Warranty</a>
     </div>
 </nav>
 
