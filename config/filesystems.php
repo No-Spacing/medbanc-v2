@@ -61,6 +61,11 @@ return [
             'root'   => public_path(),
         ],
 
+        'public_path_disk' => [
+            'driver' => 'local',
+            'root' => public_path(),
+        ],
+
     ],
 
     /*
