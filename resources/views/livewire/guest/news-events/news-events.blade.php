@@ -12,8 +12,8 @@
                 @foreach ($newsEvents as $news)
                     <!-- News Card -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        @if ($news->image && file_exists(public_path('storage/' . $news->image)))
-                            <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
+                        @if ($news->image[0] && file_exists(public_path($news->image[0])))
+                            <img src="{{ asset($news->image[0]) }}" alt="{{ $news->title }}"
                                 class="w-full h-[300px] object-cover rounded-t-lg">
                         @else
                             <img src="https://via.placeholder.com/900x540?text=No+Image" alt="No Image"
@@ -25,7 +25,7 @@
                                 <i class="fas fa-calendar-alt"></i>
                                 {{ \Carbon\Carbon::parse($news->date)->format('F d, Y') }}
                             </p>
-                            <a href="{{ route('news&events.show', $news->id) }}"
+                            <a href="{{ route('show.news.events', $news->id) }}"
                                 class="px-6 py-2 rounded text-white bg-Color-Logo-Green hover:bg-AColor-Logo-Green transition duration-300">
                                 Read More
                             </a>

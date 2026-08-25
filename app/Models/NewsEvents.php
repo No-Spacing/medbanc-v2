@@ -11,6 +11,10 @@ class NewsEvents extends Model
         'description',
         'image',
         'date',
-        'status,'
+        'status',
+    ];
+
+    protected $casts = [
+        'image' => 'array',
     ];
 }

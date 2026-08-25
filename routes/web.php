@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guest\Home;
 use App\Livewire\Guest\About;
-use App\Livewire\Guest\NewsEvents;
+use App\Livewire\Guest\NewsAndEvents;
+use App\Livewire\Guest\NewsEvents\ShowNewsEvents;
 use App\Livewire\Guest\Contact;
 use App\Livewire\Guest\Warranty;
 use App\Livewire\Guest\Manuals;
@@ -21,7 +22,8 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Dashboard;
 use App\Livewire\Auth\Product\CreateProduct;
 use App\Livewire\Auth\Career\CreateCareer;
-use App\Livewire\Auth\CreateNewsEvents;
+
+use App\Livewire\Auth\Newsevents\CreateNewsEvents;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -41,13 +43,16 @@ Route::middleware(['guest'])->group(function () {
 
     Route::get('/products/{category_slug}/product-list/show-product/{product_id}', ShowProduct::class)->name('show-product');
 
-    Route::get('/news-events', NewsEvents::class)->name('news-events');
+    Route::get('/news-events', NewsAndEvents::class)->name('news-events');
 
     Route::get('/careers', Careers::class)->name('careers');
 
     Route::get('/warranty', Warranty::class)->name('warranty');
 
     Route::get('/manuals', Manuals::class)->name('manuals');
+
+    Route::get('/show-news-events/{id}', ShowNewsEvents::class)->name('show.news.events');
+
 });
 
 
