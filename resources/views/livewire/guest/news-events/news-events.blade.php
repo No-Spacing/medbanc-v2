@@ -34,7 +34,9 @@
                 @endforeach
             </div>
             
-            <h3 class="text-center text-xl font-medium">Coming soon...</h3>
+            @if (!$newsEvents)
+                <h3 class="text-center text-xl font-medium">Coming soon...</h3>
+            @endif
         </section>
     </div>
 

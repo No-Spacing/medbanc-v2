@@ -50,7 +50,8 @@
 
             <!-- Description / Body Text -->
             <div class="mt-6 text-gray-700 leading-relaxed space-y-4 text-base md:text-lg">
-                {!! nl2br(e($newsEvent->description)) !!}
+                {{-- {!! nl2br(e($newsEvent->description)) !!} --}}
+                {!! $newsEvent->description !!}
             </div>
 
             <!-- Footer / Back Link -->
