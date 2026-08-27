@@ -14,7 +14,12 @@
         </div>
     </section> --}}
 
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10" style="margin-top: 100px;">
+    
+
+<div class="mt-16">
+    <div class="w-full">
+        <img src="{{ asset('images/news-events/news-banner.jpg') }}" alt="Full Width Image" class="w-full h-auto">
+    </div>
     <div class="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100">
         
         <!-- Images on Top in a Horizontal Axis with Full Height Capability -->

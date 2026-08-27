@@ -13,7 +13,7 @@ class ShowNewsEvents extends Component
 
     public function render()
     {
-        $relatedArticles = NewsEvents::all();
+        $relatedArticles = NewsEvents::whereNotIn('id', [$this->id])->get();
 
         return view('livewire.guest.news-events.show-news-events')
         ->layout('components.layouts.guest.app')
