@@ -1,5 +1,5 @@
 <div>
-     <!-- News Content Section -->
+   {{--   <!-- News Content Section -->
         {{-- <section class="container mx-auto px-6 py-12">
         <div class="bg-white shadow-lg rounded-lg p-8">
             <h2 class="text-2xl font-bold text-Medium-Sea-Green mb-4">New Product Launch</h2>
@@ -12,7 +12,7 @@
             </ul>
             <p class="text-gray-700">Stay tuned for more updates and be the first to experience the future with us!</p>
         </div>
-    </section> --}}
+    </section> --}} 
 
     
 
@@ -20,36 +20,161 @@
     <div class="w-full">
         <img src="{{ asset('images/news-events/news-banner.jpg') }}" alt="Full Width Image" class="w-full h-auto">
     </div>
-    <div class="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100">
+    <div class="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100 mt-10 ">
         
         <!-- Images on Top in a Horizontal Axis with Full Height Capability -->
-        <div class="w-full bg-gray-50 p-6 border-b border-gray-100">
-            @if (!empty($newsEvent->image) && is_array($newsEvent->image) && count($newsEvent->image) > 0)
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-stretch">
-                    @foreach ($newsEvent->image as $image)
-                        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-gray-200 flex flex-col">
-                            <img src="{{ asset($image) }}" alt="{{ $newsEvent->title }}" class="w-full h-full min-h-[250px] max-h-[350px] object-cover hover:scale-105 transition-transform duration-300">
+        <div class="bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100 ">
+        @php
+            $images = $newsEvent->image ?? [];
+            $imageCount = is_array($images) ? count($images) : 0;
+        @endphp
+
+        @if ($imageCount > 0)
+            {{-- 1 IMAGE --}}
+            @if ($imageCount === 1)
+                <div class="max-w-6xl mx-auto px-4 mt-6 mb-6">
+                    <div class="group overflow-hidden rounded-2xl">
+                        <img
+                            src="{{ asset($images[0]) }}"
+                            alt="{{ $newsEvent->title }}"
+                            class="w-full h-[340px] md:h-[350px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        >
+                    </div>
+                </div>
+            @elseif ($imageCount === 2)
+            {{-- 2 IMAGES --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto mt-6 mb-6">
+                    @foreach ($images as $image)
+                        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                            <img
+                                src="{{ asset($image) }}"
+                                alt="{{ $newsEvent->title }}"
+                                class="w-full h-[400px] md:h-[400px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            >
                         </div>
                     @endforeach
                 </div>
-            @else
-                <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-gray-200 max-w-md mx-auto">
-                    <img src="https://via.placeholder.com/900x540?text=No+Image" alt="No Image" class="w-full h-full min-h-[250px] object-cover">
+
+
+            {{-- 3 IMAGES --}}
+            @elseif ($imageCount === 3)
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto mt-6 mb-6">
+
+                    {{-- Large image --}}
+                    <div class="group overflow-hidden rounded-2xl bg-white shadow-sm md:row-span-2">
+                        <img
+                            src="{{ asset($images[0]) }}"
+                            alt="{{ $newsEvent->title }}"
+                            class="w-full h-[400px] md:h-[600px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        >
+                    </div>
+
+                    {{-- Two smaller images --}}
+                    <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                        <img
+                            src="{{ asset($images[1]) }}"
+                            alt="{{ $newsEvent->title }}"
+                            class="w-full h-[290px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        >
+                    </div>
+
+                    <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                        <img
+                            src="{{ asset($images[2]) }}"
+                            alt="{{ $newsEvent->title }}"
+                            class="w-full h-[290px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        >
+                    </div>
+
                 </div>
+
+
+            {{-- 4 IMAGES --}}
+            @elseif ($imageCount === 4)
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-6xl mx-auto">
+                    @foreach ($images as $image)
+                        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                            <img
+                                src="{{ asset($image) }}"
+                                alt="{{ $newsEvent->title }}"
+                                class="w-full h-[280px] md:h-[360px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            >
+                        </div>
+                    @endforeach
+                </div>
+
+
+            {{-- 5 IMAGES --}}
+            @elseif ($imageCount === 5)
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+
+                {{-- Large feature --}}
+                <div class="group overflow-hidden rounded-2xl bg-white shadow-sm md:row-span-2">
+                    <img
+                        src="{{ asset($images[0]) }}"
+                        alt="{{ $newsEvent->title }}"
+                        class="w-full h-[280px] md:h-[580px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    >
+                </div>
+
+                {{-- Images 2 - 5 --}}
+                @for ($i = 1; $i < 5; $i++)
+                    <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                        <img
+                            src="{{ asset($images[$i]) }}"
+                            alt="{{ $newsEvent->title }}"
+                            class="w-full h-[280px] md:h-[280px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        >
+                    </div>
+                @endfor
+
+            </div>
+
+
+            {{-- 6+ IMAGES --}}
+            @else
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+                    @foreach ($images as $image)
+                        <div class="group overflow-hidden rounded-2xl bg-white shadow-sm">
+                            <img
+                                src="{{ asset($image) }}"
+                                alt="{{ $newsEvent->title }}"
+                                class="w-full h-[280px] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                            >
+                        </div>
+                    @endforeach
+                </div>
+
             @endif
+
+        @else
+
+        {{-- NO IMAGE --}}
+        <div class="max-w-4xl mx-auto">
+            <div class="overflow-hidden rounded-2xl bg-white shadow-sm">
+                <img
+                    src="https://via.placeholder.com/1200x700?text=No+Image"
+                    alt="No Image"
+                    class="w-full h-[400px] object-cover"
+                >
+            </div>
         </div>
 
-        <!-- Content on the Bottom -->
-        <div class="p-8 md:p-12">
+    @endif
+      <div class="max-w-6xl mx-auto mt-6 mb-6 px-6 md:p-12">
             
             <!-- Date -->
-            <div class="flex items-center text-gray-500 text-sm space-x-2 mb-3">
+            <div class="flex items-center text-gray-500 text-sm gap-2 mb-3">
                 <i class="fas fa-calendar-alt text-Color-Logo-Green"></i>
                 <span>{{ \Carbon\Carbon::parse($newsEvent->date)->format('F d, Y') }}</span>
             </div>
 
             <!-- Title with Left Accent Border -->
-            <h2 class="text-3xl font-extrabold text-gray-900 leading-tight border-l-4 border-Color-Logo-Green pl-4">
+            <h2 class="text-3xl font-bold text-gray-900 leading-tight border-l-4 border-Color-Logo-Green pl-4 mt-2">
                 {{ $newsEvent->title }}
             </h2>
 
@@ -70,6 +195,9 @@
         </div>
 
     </div>
+    </div>
+        <!-- Content on the Bottom -->
+      
 </div>
 
     <!-- Related Articles -->
